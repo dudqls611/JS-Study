@@ -30,11 +30,13 @@ function writeToLog(
 }
 
 function calculateResult(calculationType) {
-  if (
+  const enteredNumber = getUserNumberInput();
+  if ( // 사칙연산이 아니거나 0이라면 바로 종료한다
     calculationType !== 'ADD' && 
     calculationType !== 'SUBTRACT' && 
     calculationType !== 'MULTIPLY' &&
-    calculationType !== 'DIVIDE'
+    calculationType !== 'DIVIDE' ||
+    !enteredNumber
   ) {
     return;
   }
@@ -45,7 +47,6 @@ function calculateResult(calculationType) {
   //   calculationType === 'MULTIPLY' ||
   //   calculationType === 'DIVIDE'
   // ) {
-    const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
     if (calculationType === 'ADD') {
